@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 2rem;
+}
+
+/* Top bar */
+.top-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: 100%;
+    flex-wrap: nowrap;  /* no wrapping by default */
+    margin-bottom: 1rem;
+}
+
+/* Title */
+.top-bar h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+/* Add input + Add button container */
+.add-group {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;       /* prevents wrapping of input+button */
+}
+
+/* Add input */
+#addInput {
+    flex: 1;
+    min-width: 150px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    height: 2.5rem;
+    resize: vertical; 
+    background-color: #f9f9f9; /* optional: background color */
+    border: 1px solid #ccc;    /* optional: border color */
+}
+
+/* Add button */
+#addBtn {
+    flex-shrink: 0;      /* button width fixed */
+    padding: 0 1rem;     /* normal width */
+    height: 2.5rem;
+    font-size: 1rem;
+    width: auto;         /* make sure it's not stretched */
+}
+
+/* Search input */
+#search {
+    flex: 1;
+    min-width: 120px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    height: 2.5rem;
+}
+
+/* Todo list */
+#todoList {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+#todoList li {
+    background: #f2f2f2;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+    font-size: 1rem;
+}
+
+/* Mobile / small screens */
+@media (max-width: 600px) {
+    .top-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .add-group {
+        width: 100%;
+    }
+
+    #addInput {
+        width: 100%;       /* input stretches */
+        margin-top: 0.5rem;
+    }
+
+    #addBtn {
+        width: auto;       /* button stays normal size */
+        margin-top: 0.5rem;
+    }
+
+    #search {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}

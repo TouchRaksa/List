@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery ToDo List</title>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top-bar">
+        <h2 class="list">Add List</h2>
+
+        <!-- Wrap Add input + Add button in a container -->
+        <div class="add-group">
+            <input type="text" id="addInput" placeholder="Add product">
+            <button id="addBtn">Add</button>
+        </div>
+
+        <input type="text" id="search" placeholder="Search place">
+    </div>
+
+    <ul id="todoList"></ul>
+
+    <script src="script.js"></script>
+</body>
+</html>
