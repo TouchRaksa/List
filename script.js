@@ -1,15 +1,28 @@
 $(document).ready(function () {
 
-    /* ---------- SHARE LINK (VIEW SAME LIST) ---------- */
-    $(document).ready(function () {
-        const link = window.location.href;
+// jQuery
+$(document).ready(function () {
+    const textarea = $("#myText");
 
-        $("#shareBtn").click(function () {
-            $("#shareLink").val(link).select();
-            navigator.clipboard.writeText(link);
-            alert("Share link copied!");
-        });
+    // If there is text in URL, load it
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("text")) {
+        // Decode from URL and set textarea
+        const sharedText = decodeURIComponent(params.get("text"));
+        textarea.val(sharedText);
+    }
+
+    // Share button
+    $("#shareBtn").click(function () {
+        const text = textarea.val();
+        const encodedText = encodeURIComponent(text);
+        const shareURL = `${window.location.origin}${window.location.pathname}?text=${encodedText}`;
+
+        $("#shareLink").val(shareURL).select();
+        navigator.clipboard.writeText(shareURL);
+        alert("Share link copied!");
     });
+});
 
     /* ---------- LOCAL STORAGE ---------- */
     function saveTasks() {
