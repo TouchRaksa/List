@@ -81,3 +81,16 @@ button {
         flex-direction: row;
     }
 }
+
+#shareBtn {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+
+#shareLink {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+}

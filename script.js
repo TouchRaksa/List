@@ -1,16 +1,27 @@
 $(document).ready(function () {
 
+    /* ---------- LIST ID ---------- */
+    const urlParams = new URLSearchParams(window.location.search);
+    let listId = urlParams.get("list");
+
+    if (!listId) {
+        listId = Math.random().toString(36).substring(2, 10);
+        window.history.replaceState(null, "", `?list=${listId}`);
+    }
+
+    const STORAGE_KEY = `tasks_${listId}`;
+
     /* ---------- LOCAL STORAGE ---------- */
     function saveTasks() {
         const tasks = [];
         $("#todoList li .item-text").each(function () {
             tasks.push($(this).text());
         });
-        localStorage.setItem("tasks", JSON.stringify(tasks));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
     }
 
     function loadTasks() {
-        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        const tasks = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
         tasks.forEach(task => addItem(task));
     }
 
@@ -76,6 +87,14 @@ $(document).ready(function () {
         $("#todoList li").each(function () {
             $(this).toggle($(this).text().toLowerCase().includes(value));
         });
+    });
+
+    /* ---------- SHARE ---------- */
+    $("#shareBtn").click(function () {
+        const link = window.location.href;
+        $("#shareLink").val(link).select();
+        navigator.clipboard.writeText(link);
+        alert("Share link copied!");
     });
 
 });
