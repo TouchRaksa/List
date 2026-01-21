@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    /* ------------------ LOCAL STORAGE ------------------ */
+    /* ---------- LOCAL STORAGE ---------- */
     function saveTasks() {
         const tasks = [];
         $("#todoList li .item-text").each(function () {
@@ -14,33 +14,30 @@ $(document).ready(function () {
         tasks.forEach(task => addItem(task));
     }
 
-    /* ------------------ INIT ------------------ */
+    /* ---------- INIT ---------- */
     $("#todoList").sortable({
-        update: function () {
-            saveTasks();
-        }
+        update: saveTasks
     });
 
     loadTasks();
 
-    /* ------------------ AUTO-RESIZE TEXTAREA ------------------ */
-    const textarea = document.getElementById('addInput');
-    textarea.addEventListener('input', () => {
-        textarea.style.height = 'auto';
-        textarea.style.height = textarea.scrollHeight + 'px';
+    /* ---------- AUTO RESIZE TEXTAREA ---------- */
+    const textarea = document.getElementById("addInput");
+    textarea.addEventListener("input", () => {
+        textarea.style.height = "auto";
+        textarea.style.height = textarea.scrollHeight + "px";
     });
 
-    /* ------------------ ADD ITEM ------------------ */
+    /* ---------- ADD ---------- */
     $("#addBtn").click(function () {
         const text = $("#addInput").val().trim();
-        if (text === "") return alert("Please enter a task");
+        if (!text) return;
 
         addItem(text);
         saveTasks();
 
-        // Reset textarea
-        $("#addInput").val('');
-        textarea.style.height = '2.5rem';
+        $("#addInput").val("");
+        textarea.style.height = "3rem";
     });
 
     function addItem(text) {
@@ -55,31 +52,30 @@ $(document).ready(function () {
         `);
     }
 
-    /* ------------------ DELETE ------------------ */
+    /* ---------- DELETE ---------- */
     $("#todoList").on("click", ".deleteBtn", function () {
         $(this).closest("li").remove();
         saveTasks();
     });
 
-    /* ------------------ EDIT ------------------ */
+    /* ---------- EDIT ---------- */
     $("#todoList").on("click", ".editBtn", function () {
         const li = $(this).closest("li");
-        const text = li.find(".item-text").text();
+        const oldText = li.find(".item-text").text();
+        const newText = prompt("Edit task:", oldText);
 
-        const newText = prompt("Edit task:", text);
-        if (newText && newText.trim() !== "") {
+        if (newText && newText.trim()) {
             li.find(".item-text").text(newText);
             saveTasks();
         }
     });
 
-    /* ------------------ SEARCH ------------------ */
+    /* ---------- SEARCH ---------- */
     $("#search").on("keyup", function () {
         const value = $(this).val().toLowerCase();
-
         $("#todoList li").each(function () {
-            const text = $(this).text().toLowerCase();
-            $(this).toggle(text.includes(value));
+            $(this).toggle($(this).text().toLowerCase().includes(value));
         });
     });
+
 });
