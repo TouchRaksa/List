@@ -1,15 +1,15 @@
 $(document).ready(function () {
 
-    /* ---------- LIST ID ---------- */
-    const urlParams = new URLSearchParams(window.location.search);
-    let listId = urlParams.get("list");
+    /* ---------- SHARE LINK (VIEW SAME LIST) ---------- */
+    $(document).ready(function () {
+        const link = window.location.href;
 
-    if (!listId) {
-        listId = Math.random().toString(36).substring(2, 10);
-        window.history.replaceState(null, "", `?list=${listId}`);
-    }
-
-    const STORAGE_KEY = `tasks_${listId}`;
+        $("#shareBtn").click(function () {
+            $("#shareLink").val(link).select();
+            navigator.clipboard.writeText(link);
+            alert("Share link copied!");
+        });
+    });
 
     /* ---------- LOCAL STORAGE ---------- */
     function saveTasks() {
@@ -17,11 +17,11 @@ $(document).ready(function () {
         $("#todoList li .item-text").each(function () {
             tasks.push($(this).text());
         });
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+        localStorage.setItem("tasks", JSON.stringify(tasks));
     }
 
     function loadTasks() {
-        const tasks = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
         tasks.forEach(task => addItem(task));
     }
 
@@ -87,14 +87,6 @@ $(document).ready(function () {
         $("#todoList li").each(function () {
             $(this).toggle($(this).text().toLowerCase().includes(value));
         });
-    });
-
-    /* ---------- SHARE ---------- */
-    $("#shareBtn").click(function () {
-        const link = window.location.href;
-        $("#shareLink").val(link).select();
-        navigator.clipboard.writeText(link);
-        alert("Share link copied!");
     });
 
 });
