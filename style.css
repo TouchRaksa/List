@@ -45,8 +45,8 @@ body {
 
 /* Add button */
 #addBtn {
-    flex-shrink: 0;      /* button width fixed */
-    padding: 0 1rem;     /* normal width */
+    flex-shrink: 0;    
+    padding: 0 1rem;   
     height: 2.5rem;
     font-size: 1rem;
     width: auto;         /* make sure it's not stretched */

@@ -82,5 +82,4 @@ $(document).ready(function () {
             $(this).toggle(text.includes(value));
         });
     });
-
 });
