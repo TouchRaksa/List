@@ -26,7 +26,7 @@ body {
     resize: none;
     overflow: hidden;
     background-color: rgb(214, 221, 221);
-    border-radius: 10px;
+    border-radius: 6px;
     white-space: pre-wrap;
     word-break: break-word;
 }
@@ -37,6 +37,8 @@ body {
     padding: 0 1rem;
     font-size: 1rem;
     white-space: nowrap;
+    background-color: rgb(214, 221, 221);
+    border-radius: 6px;
 }
 
 /* Search */
@@ -46,7 +48,7 @@ body {
     font-size: 1rem;
     margin-bottom: 1rem;
     background-color: rgb(214, 221, 221);
-    border-radius: 10px;
+    border-radius: 6px;
 }
 
 /* Todo list */
@@ -56,10 +58,10 @@ body {
 }
 
 #todoList li {
-    background: #f2f2f2;
+    background-color: rgb(214, 221, 221);
     padding: 0.7rem;
     margin-bottom: 0.5rem;
-    border-radius: 6px;
+    border-radius: 8px;
 
     display: flex;
     justify-content: space-between;
@@ -71,6 +73,7 @@ body {
     flex: 1;
     white-space: pre-wrap;
     word-break: break-word;
+    
 }
 
 /* Buttons */
@@ -89,6 +92,8 @@ button {
     margin-top: 0.5rem;
     padding: 0.5rem 1rem;
     font-size: 1rem;
+    background-color: rgb(214, 221, 221);
+    border-radius: 6px;
 }
 
 #shareLink {
@@ -96,4 +101,6 @@ button {
     margin-top: 0.5rem;
     padding: 0.5rem;
     font-size: 0.9rem;
+    background-color: rgb(214, 221, 221);
+    border-radius: 6px;
 }
